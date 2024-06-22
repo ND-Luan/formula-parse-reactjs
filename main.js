@@ -1,7 +1,7 @@
+console.log("runing");
 const { FormulaHelpers, Types, FormulaError, MAX_ROW, MAX_COLUMN } =
   FormulaParser;
-
-const parseFunc = () => {
+function parseFunc() {
   const position = { row: 1, col: 1, sheet: "Sheet1" };
   const data = [
     // A  B  C
@@ -17,7 +17,6 @@ const parseFunc = () => {
         return String.fromCharCode(number);
       },
     },
-
     // Variable used in formulas (defined name)
     // Should only return range reference or cell reference
     onVariable: (name, sheetName) => {
@@ -65,10 +64,8 @@ const parseFunc = () => {
     },
   });
 
-  const parse = parser.parse("SUM(A1:C1)", position);
+  const parse = parser.parse("SUM(A:C)", position);
   console.log("parse", parse);
-
-  // Phân tích và tính toán bểu thức
-};
+}
 
 parseFunc();
